@@ -39,6 +39,15 @@ public class DepartmentController {
         }
     }
 
+    @DeleteMapping("/")
+    public void deleteDepartment(@RequestParam String deptName) {
+        try {
+            departmentService.deleteDepartment(deptName);
+        } catch (UnknownDepartmentException e) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, e.getMessage());
+        }
+    }
+
     @PostMapping("/")
     public void createDepartment(@RequestBody DepartmentDTO departmentDTO) {
         try {

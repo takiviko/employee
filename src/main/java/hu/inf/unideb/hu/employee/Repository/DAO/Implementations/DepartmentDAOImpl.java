@@ -50,8 +50,18 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     }
 
     @Override
-    public void deleteDepartment(String dept_name) throws UnknownDepartmentException {
+    @Transactional
+    public void deleteDepartment(String deptName) throws UnknownDepartmentException {
+        Optional<DepartmentEntity> departmentEntity = departmentRepository.findByDeptName(deptName);
+        if(departmentEntity.isEmpty()) {
+            throw new UnknownDepartmentException("Department " + deptName + " not found");
+        }
 
+        try {
+            departmentRepository.delete(departmentEntity.get());
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 
     @Override
@@ -61,18 +71,18 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     public void createDepartment(Department department) throws DuplicateDepartmentException {
-            if(departmentRepository.existsDepartmentEntityByDeptName(department.getDeptName())) {
-                throw new DuplicateDepartmentException("Department " + department.getDeptName() + " already exists!");
-            }
+        if(departmentRepository.existsDepartmentEntityByDeptName(department.getDeptName())) {
+            throw new DuplicateDepartmentException("Department " + department.getDeptName() + " already exists!");
+        }
 
-            DepartmentEntity departmentEntity = convertDepartmentToEntity(department);
+        DepartmentEntity departmentEntity = convertDepartmentToEntity(department);
 
-            try {
-                departmentRepository.save(departmentEntity);
-                log.info("Department " + department.getDeptName() + " created");
-            } catch (Exception e) {
-                log.error(e.getMessage());
-            }
+        try {
+            departmentRepository.save(departmentEntity);
+            log.info("Department " + department.getDeptName() + " created");
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 
     @Override
