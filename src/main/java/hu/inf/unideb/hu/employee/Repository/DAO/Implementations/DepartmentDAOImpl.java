@@ -60,6 +60,22 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     }
 
     @Override
+    public void createDepartment(Department department) throws DuplicateDepartmentException {
+            if(departmentRepository.existsDepartmentEntityByDeptName(department.getDeptName())) {
+                throw new DuplicateDepartmentException("Department " + department.getDeptName() + " already exists!");
+            }
+
+            DepartmentEntity departmentEntity = convertDepartmentToEntity(department);
+
+            try {
+                departmentRepository.save(departmentEntity);
+                log.info("Department " + department.getDeptName() + " created");
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
+    }
+
+    @Override
     public Department getDepartmentByName(String dept_name) throws UnknownDepartmentException {
         Optional<DepartmentEntity> departmentEntity = departmentRepository.findByDeptName(dept_name);
         if(departmentEntity.isEmpty()) {
@@ -79,6 +95,13 @@ public class DepartmentDAOImpl implements DepartmentDAO {
         return Department.builder()
                 .deptNo(departmentEntity.getDeptNo())
                 .deptName(departmentEntity.getDeptName())
+                .build();
+    }
+
+    protected DepartmentEntity convertDepartmentToEntity(Department department) {
+        return DepartmentEntity.builder()
+                .deptNo(department.getDeptNo())
+                .deptName(department.getDeptName())
                 .build();
     }
 }

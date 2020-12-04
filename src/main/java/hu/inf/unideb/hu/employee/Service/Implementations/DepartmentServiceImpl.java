@@ -34,6 +34,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    public void createDepartment(Department department) throws DuplicateDepartmentException {
+        departmentDAO.createDepartment(department);
+    }
+
+    @Override
     public void updateDepartment(Department department) throws UnknownDepartmentException {
 
     }

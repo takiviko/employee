@@ -13,6 +13,8 @@ public interface DepartmentDAO {
 
     void updateDepartment(Department department) throws UnknownDepartmentException;
 
+    void createDepartment(Department department) throws DuplicateDepartmentException;
+
     Department getDepartmentByName(String dept_name) throws UnknownDepartmentException;
 
     Collection<Department> readAll();
