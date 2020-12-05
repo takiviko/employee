@@ -4,11 +4,19 @@ import hu.inf.unideb.hu.employee.Exception.DuplicateDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownEmployeeException;
 import hu.inf.unideb.hu.employee.Model.DeptEmp;
+import hu.inf.unideb.hu.employee.Repository.DAO.Interfaces.DepartmentDAO;
+import hu.inf.unideb.hu.employee.Repository.DAO.Interfaces.DeptEmpDAO;
 import hu.inf.unideb.hu.employee.Service.Interfaces.DeptEmpService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+@RequiredArgsConstructor
+@Service
 public class DeptEmpServiceImpl implements DeptEmpService {
+
+    private final DeptEmpDAO deptEmpDAO;
 
     @Override
     public void addDeptEmp(DeptEmp deptEmp) throws DuplicateDeptEmpException {
@@ -32,6 +40,6 @@ public class DeptEmpServiceImpl implements DeptEmpService {
 
     @Override
     public Collection<DeptEmp> getAllDeptEmps() {
-        return null;
+        return deptEmpDAO.getAllDeptEmps();
     }
 }
