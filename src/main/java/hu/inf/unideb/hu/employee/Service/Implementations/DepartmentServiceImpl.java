@@ -24,11 +24,6 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public void addDepartment(Department department) throws DuplicateDepartmentException, UnknownDepartmentException {
-        departmentDAO.deleteDepartment(department.getDeptName());
-    }
-
-    @Override
     public void deleteDepartment(String deptName) throws UnknownDepartmentException {
         departmentDAO.deleteDepartment(deptName);
     }
@@ -39,8 +34,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public void updateDepartment(Department department) throws UnknownDepartmentException {
-
+    public void updateDepartment(Department oldDepartment, Department newDepartment) throws UnknownDepartmentException, DuplicateDepartmentException {
+        departmentDAO.updateDepartment(oldDepartment, newDepartment);
     }
 
     @Override

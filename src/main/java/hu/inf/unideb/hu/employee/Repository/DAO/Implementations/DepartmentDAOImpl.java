@@ -25,32 +25,6 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     @Transactional
-    public String addDepartment(Department department) throws DuplicateDepartmentException {
-
-        /*
-        if(departmentRepository.existsDepartmentEntitiesByDept_name(department.getDept_name())) {
-            throw new DuplicateDepartmentException("Department " + department.getDept_name() + "already exists");
-        }
-
-         */
-
-        DepartmentEntity departmentEntity = DepartmentEntity.builder()
-                .deptNo(department.getDeptNo())
-                .deptName(department.getDeptName())
-                .build();
-        log.info("DepartmentEntity: " + departmentEntity.toString());
-
-        try {
-            departmentRepository.save(departmentEntity);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-        }
-
-        return departmentEntity.getDeptName();
-    }
-
-    @Override
-    @Transactional
     public void deleteDepartment(String deptName) throws UnknownDepartmentException {
         Optional<DepartmentEntity> departmentEntity = departmentRepository.findByDeptName(deptName);
         if(departmentEntity.isEmpty()) {
@@ -65,8 +39,24 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     }
 
     @Override
-    public void updateDepartment(Department department) throws UnknownDepartmentException {
+    public void updateDepartment(Department oldDepartment, Department newDepartment) throws UnknownDepartmentException, DuplicateDepartmentException {
+        Optional<DepartmentEntity> oldDepartmentEntity = departmentRepository.findByDeptName(oldDepartment.getDeptName());
+        if(oldDepartmentEntity.isEmpty()) {
+            throw new UnknownDepartmentException("Department " + oldDepartment.getDeptName() + " not found");
+        }
+        if(departmentRepository.existsDepartmentEntityByDeptName(newDepartment.getDeptName())) {
+            throw new DuplicateDepartmentException("Department " + newDepartment.getDeptName() + " already exists");
+        }
 
+        DepartmentEntity departmentEntity = convertDepartmentToEntity(newDepartment);
+        departmentEntity.setDeptName(oldDepartment.getDeptName());
+
+        try {
+            departmentRepository.save(departmentEntity);
+            log.info("Department " + departmentEntity.getDeptName() + " updated");
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 
     @Override

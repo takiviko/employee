@@ -7,11 +7,9 @@ import java.util.Collection;
 
 public interface DepartmentDAO {
 
-    String addDepartment(Department department) throws DuplicateDepartmentException;
-
     void deleteDepartment(String dept_name) throws UnknownDepartmentException;
 
-    void updateDepartment(Department department) throws UnknownDepartmentException;
+    void updateDepartment(Department oldDepartment, Department newDepartment) throws UnknownDepartmentException, DuplicateDepartmentException;
 
     void createDepartment(Department department) throws DuplicateDepartmentException;
 

@@ -11,13 +11,11 @@ public interface DepartmentService {
 
     Collection<Department> getAllDepartments();
 
-    void addDepartment(Department department) throws DuplicateDepartmentException, UnknownDepartmentException;
-
     void deleteDepartment(String dept_name) throws UnknownDepartmentException;
 
     void createDepartment(Department department) throws DuplicateDepartmentException;
 
-    void updateDepartment(Department department) throws UnknownDepartmentException;
+    void updateDepartment(Department oldDepartment, Department newDepartment) throws UnknownDepartmentException, DuplicateDepartmentException;
 
     Department getDepartmentByDeptName(String dept_name) throws UnknownDepartmentException;
 
