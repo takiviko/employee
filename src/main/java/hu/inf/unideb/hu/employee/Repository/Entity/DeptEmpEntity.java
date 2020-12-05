@@ -14,16 +14,10 @@ import java.util.Date;
 @Entity
 @EqualsAndHashCode
 @Table(name="dept_emp")
-@IdClass(DeptEmpKey.class)
 public class DeptEmpEntity {
 
-    @Id
-    @Column(name="emp_no")
-    private int emp_no;
-
-    @Id
-    @Column(name="dept_no")
-    private String dept_no;
+    @EmbeddedId
+    DeptEmpKey deptEmpKey;
 
     @Column(name="from_date")
     private Date fromDate;

@@ -4,7 +4,6 @@ import hu.inf.unideb.hu.employee.Exception.DuplicateDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownEmployeeException;
 import hu.inf.unideb.hu.employee.Model.DeptEmp;
-import hu.inf.unideb.hu.employee.Repository.DAO.Interfaces.DepartmentDAO;
 import hu.inf.unideb.hu.employee.Repository.DAO.Interfaces.DeptEmpDAO;
 import hu.inf.unideb.hu.employee.Service.Interfaces.DeptEmpService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +19,7 @@ public class DeptEmpServiceImpl implements DeptEmpService {
 
     @Override
     public void addDeptEmp(DeptEmp deptEmp) throws DuplicateDeptEmpException {
-
+        deptEmpDAO.createDeptEmp(deptEmp);
     }
 
     @Override

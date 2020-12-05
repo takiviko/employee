@@ -10,8 +10,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeptEmp {
-    int emp_no;
-    String dept_no;
-    Date from_date;
-    Date to_date;
+    int empNo;
+    String deptNo;
+    Date fromDate;
+    Date toDate;
 }

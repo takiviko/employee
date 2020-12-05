@@ -9,7 +9,7 @@ import java.util.Collection;
 
 public interface DeptEmpDAO {
 
-    void addDeptEmp(DeptEmp deptEmp) throws DuplicateDeptEmpException;
+    void createDeptEmp(DeptEmp deptEmp) throws DuplicateDeptEmpException;
 
     void deleteDeptEmp(int emp_no, String dept_no) throws UnknownDeptEmpException;
 
