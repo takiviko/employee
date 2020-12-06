@@ -62,6 +62,10 @@ public class DeptEmpController {
         }
     }
 
+    public void updateDeptEmp(DeptEmpDTO oldDeptEmpDTO, DeptEmpDTO newDeptEmpDTO){
+
+    }
+
     private DeptEmpDTO convertDeptEmpToDTO(DeptEmp deptEmp) {
         return DeptEmpDTO.builder()
                 .deptEmpKey(deptEmp.getDeptEmpKey())
