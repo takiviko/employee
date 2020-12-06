@@ -34,8 +34,8 @@ public class DeptEmpServiceImpl implements DeptEmpService {
     }
 
     @Override
-    public DeptEmp getDeptEmp(int emp_no, String dept_no) throws UnknownDeptEmpException {
-        return null;
+    public DeptEmp getDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException {
+        return deptEmpDAO.getDeptEmp(deptEmpKey);
     }
 
     @Override

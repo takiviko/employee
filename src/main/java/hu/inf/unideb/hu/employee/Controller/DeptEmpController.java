@@ -7,7 +7,9 @@ import hu.inf.unideb.hu.employee.Model.DeptEmp;
 import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.DeptEmpKey;
 import hu.inf.unideb.hu.employee.Service.Interfaces.DeptEmpService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/DeptEmp")
 public class DeptEmpController {
 
@@ -43,6 +46,19 @@ public class DeptEmpController {
             deptEmpService.deleteDeptEmp(deptEmpKey);
         } catch (UnknownDeptEmpException e) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, e.getMessage());
+        }
+    }
+
+    @GetMapping("/deptNo/{deptNo}/empNo/{empNo}")
+    public DeptEmpDTO getDeptEmpByDeptEmpKey(@PathVariable("deptNo") String deptNo, @PathVariable("empNo") int empNo) {
+        try {
+            return convertDeptEmpToDTO(deptEmpService.getDeptEmp(
+                    DeptEmpKey.builder()
+                            .empNo(empNo)
+                            .deptNo(deptNo)
+                            .build()));
+        } catch (UnknownDeptEmpException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
     }
 

@@ -67,7 +67,12 @@ public class DeptEmpDAOImpl implements DeptEmpDAO {
 
     @Override
     public DeptEmp getDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException {
-        return null;
+        Optional<DeptEmpEntity> deptEmpEntity = deptEmpRepository.findByDeptEmpKey(deptEmpKey);
+        if(deptEmpEntity.isEmpty()) {
+            throw new UnknownDeptEmpException("DeptEmp " + deptEmpKey + " not found");
+        }
+        log.info("Getting deptEmp by " + deptEmpKey);
+        return convertEntityToDeptEmp(deptEmpEntity.get());
     }
 
     @Override

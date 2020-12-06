@@ -16,7 +16,7 @@ public interface DeptEmpService {
 
     void updateDeptEmp(DeptEmp deptEmp) throws UnknownDeptEmpException, UnknownEmployeeException;
 
-    DeptEmp getDeptEmp(int emp_no, String dept_no) throws UnknownDeptEmpException;
+    DeptEmp getDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException;
 
     Collection<DeptEmp> getAllDeptEmps();
 }
