@@ -1,5 +1,6 @@
 package hu.inf.unideb.hu.employee.Service.Interfaces;
 
+import hu.inf.unideb.hu.employee.Controller.DTO.DeptEmpDTO;
 import hu.inf.unideb.hu.employee.Exception.DuplicateDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownEmployeeException;
@@ -14,7 +15,7 @@ public interface DeptEmpService {
 
     void deleteDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException;
 
-    void updateDeptEmp(DeptEmp deptEmp) throws UnknownDeptEmpException, UnknownEmployeeException;
+    void updateDeptEmp(DeptEmp oldDeptEmp, DeptEmp newDeptEmp) throws UnknownDeptEmpException, UnknownEmployeeException, DuplicateDeptEmpException;
 
     DeptEmp getDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException;
 

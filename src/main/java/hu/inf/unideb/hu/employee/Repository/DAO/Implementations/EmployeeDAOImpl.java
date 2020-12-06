@@ -28,7 +28,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public void updateEmployee(Employee employee) throws UnknownEmployeeException {
+    public void updateEmployee(Employee oldEmployee, Employee newEmployee) throws UnknownEmployeeException {
 
     }
 

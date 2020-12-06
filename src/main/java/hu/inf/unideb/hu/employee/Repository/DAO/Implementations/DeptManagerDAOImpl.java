@@ -28,7 +28,7 @@ public class DeptManagerDAOImpl implements DeptManagerDAO {
     }
 
     @Override
-    public void updateDeptManager(DeptManager deptManager) throws UnknownDeptManagerException {
+    public void updateDeptManager(DeptManager oldDeptManager, DeptManager newDeptManager) throws UnknownDeptManagerException {
 
     }
 

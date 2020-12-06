@@ -21,7 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void updateEmployee(Employee employee) throws UnknownEmployeeException {
+    public void updateEmployee(Employee oldEmployee, Employee newEmployee) throws UnknownEmployeeException {
 
     }
 

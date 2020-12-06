@@ -14,7 +14,7 @@ public interface DeptEmpDAO {
 
     void deleteDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException;
 
-    void updateDeptEmp(DeptEmp deptEmp) throws UnknownDeptEmpException, UnknownEmployeeException;
+    void updateDeptEmp(DeptEmp oldDeptEmp, DeptEmp newDeptEmp) throws UnknownDeptEmpException, UnknownEmployeeException, DuplicateDeptEmpException;
 
     DeptEmp getDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException;
 

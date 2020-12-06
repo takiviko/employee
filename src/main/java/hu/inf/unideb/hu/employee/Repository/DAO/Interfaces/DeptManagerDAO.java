@@ -13,7 +13,7 @@ public interface DeptManagerDAO {
 
     void deleteDeptManager(DeptManagerKey deptManagerKey) throws UnknownDeptManagerException;
 
-    void updateDeptManager(DeptManager deptManager) throws UnknownDeptManagerException;
+    void updateDeptManager(DeptManager oldDeptManager, DeptManager newDeptManager) throws UnknownDeptManagerException;
 
     Collection<DeptManager> getAllManagers();
 

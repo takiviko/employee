@@ -11,7 +11,7 @@ public interface SalaryService {
 
     void addSalary(Salary salary) throws DuplicateSalaryException;
 
-    void updateSalary(Salary salary) throws UnknownSalaryException;
+    void updateSalary(Salary oldSalary, Salary newSalary) throws UnknownSalaryException;
 
     void deleteSalary(Salary salary) throws UnknownSalaryException;
 

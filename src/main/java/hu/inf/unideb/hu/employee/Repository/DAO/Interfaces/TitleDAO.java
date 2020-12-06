@@ -10,7 +10,7 @@ public interface TitleDAO {
 
     void addTitle(Title title) throws DuplicateTitleException;
 
-    void UpdateTitle(Title title) throws UnknownTitleException;
+    void UpdateTitle(Title oldTitle, Title newTitle) throws UnknownTitleException;
 
     void deleteTitle(Title title) throws UnknownTitleException;
 

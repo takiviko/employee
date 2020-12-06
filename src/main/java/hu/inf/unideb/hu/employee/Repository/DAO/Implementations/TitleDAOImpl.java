@@ -23,7 +23,7 @@ public class TitleDAOImpl implements TitleDAO {
     }
 
     @Override
-    public void UpdateTitle(Title title) throws UnknownTitleException {
+    public void UpdateTitle(Title oldTitle, Title newTitle) throws UnknownTitleException {
 
     }
 

@@ -23,7 +23,7 @@ public class SalaryDAOImpl implements SalaryDAO {
     }
 
     @Override
-    public void updateSalary(Salary salary) throws UnknownSalaryException {
+    public void updateSalary(Salary oldSalary, Salary newSalary) throws UnknownSalaryException {
 
     }
 

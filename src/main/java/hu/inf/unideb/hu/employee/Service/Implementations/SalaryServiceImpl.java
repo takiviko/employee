@@ -16,7 +16,7 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     @Override
-    public void updateSalary(Salary salary) throws UnknownSalaryException {
+    public void updateSalary(Salary oldSalary, Salary newSalary) throws UnknownSalaryException {
 
     }
 

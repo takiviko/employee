@@ -61,8 +61,23 @@ public class DeptEmpDAOImpl implements DeptEmpDAO {
     }
 
     @Override
-    public void updateDeptEmp(DeptEmp deptEmp) throws UnknownDeptEmpException, UnknownEmployeeException {
+    public void updateDeptEmp(DeptEmp oldDeptEmp, DeptEmp newDeptEmp) throws UnknownDeptEmpException, DuplicateDeptEmpException {
+        Optional<DeptEmpEntity> oldDeptEmpEntity = deptEmpRepository.findByDeptEmpKey(oldDeptEmp.getDeptEmpKey());
+        if(oldDeptEmpEntity.isEmpty()) {
+            throw new UnknownDeptEmpException("DeptEmp " + oldDeptEmp.getDeptEmpKey() + " not found");
+        }
+        if(deptEmpRepository.existsDeptEmpEntityByDeptEmpKey(newDeptEmp.getDeptEmpKey())) {
+            throw new DuplicateDeptEmpException("DeptEmp " + newDeptEmp.getDeptEmpKey() + " already exists");
+        }
 
+        DeptEmpEntity newDeptEmpEntity = convertDeptEmpToEntity(newDeptEmp);
+
+        log.info("DeptEmp" + oldDeptEmp.getDeptEmpKey() + " updated");
+        try {
+            deptEmpRepository.save(newDeptEmpEntity);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 
     @Override

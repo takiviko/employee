@@ -13,7 +13,7 @@ public interface EmployeeService {
 
     void deleteEmployee(Employee employee) throws UnknownEmployeeException;
 
-    void updateEmployee(Employee employee) throws UnknownEmployeeException;
+    void updateEmployee(Employee oldEmployee, Employee newEmployee) throws UnknownEmployeeException;
 
     Collection<Employee> getAllEmployees();
 

@@ -12,7 +12,7 @@ public interface DeptManagerService {
 
     void deleteDeptManager(int emp_no, String dept_no) throws UnknownDeptManagerException;
 
-    void updateDeptManager(DeptManager deptManager) throws UnknownDeptManagerException;
+    void updateDeptManager(DeptManager oldDeptManager, DeptManager newDeptManager) throws UnknownDeptManagerException;
 
     Collection<DeptManager> getAllManagers();
 }
