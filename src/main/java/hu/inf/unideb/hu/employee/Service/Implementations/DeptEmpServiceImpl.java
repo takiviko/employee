@@ -1,6 +1,5 @@
 package hu.inf.unideb.hu.employee.Service.Implementations;
 
-import hu.inf.unideb.hu.employee.Controller.DTO.DeptEmpDTO;
 import hu.inf.unideb.hu.employee.Exception.DuplicateDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownEmployeeException;
@@ -36,7 +35,7 @@ public class DeptEmpServiceImpl implements DeptEmpService {
 
     @Override
     public DeptEmp getDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException {
-        return deptEmpDAO.getDeptEmp(deptEmpKey);
+        return deptEmpDAO.getDeptEmpByKey(deptEmpKey);
     }
 
     @Override

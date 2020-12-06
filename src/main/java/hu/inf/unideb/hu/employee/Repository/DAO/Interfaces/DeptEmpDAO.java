@@ -16,7 +16,7 @@ public interface DeptEmpDAO {
 
     void updateDeptEmp(DeptEmp oldDeptEmp, DeptEmp newDeptEmp) throws UnknownDeptEmpException, UnknownEmployeeException, DuplicateDeptEmpException;
 
-    DeptEmp getDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException;
+    DeptEmp getDeptEmpByKey(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException;
 
     Collection<DeptEmp> getAllDeptEmps();
 

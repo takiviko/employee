@@ -1,6 +1,5 @@
 package hu.inf.unideb.hu.employee.Service.Interfaces;
 
-import hu.inf.unideb.hu.employee.Controller.DTO.DeptEmpDTO;
 import hu.inf.unideb.hu.employee.Exception.DuplicateDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownEmployeeException;

@@ -2,7 +2,6 @@ package hu.inf.unideb.hu.employee.Repository.DAO.Implementations;
 
 import hu.inf.unideb.hu.employee.Exception.DuplicateDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownDeptEmpException;
-import hu.inf.unideb.hu.employee.Exception.UnknownEmployeeException;
 import hu.inf.unideb.hu.employee.Model.DeptEmp;
 import hu.inf.unideb.hu.employee.Repository.DAO.Interfaces.DeptEmpDAO;
 import hu.inf.unideb.hu.employee.Repository.DeptEmpRepository;
@@ -72,7 +71,7 @@ public class DeptEmpDAOImpl implements DeptEmpDAO {
 
         DeptEmpEntity newDeptEmpEntity = convertDeptEmpToEntity(newDeptEmp);
 
-        log.info("DeptEmp" + oldDeptEmp.getDeptEmpKey() + " updated");
+        log.info("DeptEmp " + oldDeptEmp.getDeptEmpKey() + " updated");
         try {
             deptEmpRepository.save(newDeptEmpEntity);
         } catch (Exception e) {
@@ -81,7 +80,7 @@ public class DeptEmpDAOImpl implements DeptEmpDAO {
     }
 
     @Override
-    public DeptEmp getDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException {
+    public DeptEmp getDeptEmpByKey(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException {
         Optional<DeptEmpEntity> deptEmpEntity = deptEmpRepository.findByDeptEmpKey(deptEmpKey);
         if(deptEmpEntity.isEmpty()) {
             throw new UnknownDeptEmpException("DeptEmp " + deptEmpKey + " not found");
@@ -107,7 +106,8 @@ public class DeptEmpDAOImpl implements DeptEmpDAO {
 
     protected DeptEmpEntity convertDeptEmpToEntity(DeptEmp deptEmp) {
         return DeptEmpEntity.builder()
-                .deptEmpKey(DeptEmpKey.builder()
+                .deptEmpKey(
+                        DeptEmpKey.builder()
                         .deptNo(deptEmp.getDeptEmpKey().getDeptNo())
                         .empNo(deptEmp.getDeptEmpKey().getEmpNo())
                         .build())
