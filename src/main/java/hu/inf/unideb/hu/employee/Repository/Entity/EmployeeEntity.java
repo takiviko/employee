@@ -21,7 +21,7 @@ public class EmployeeEntity {
 
     @Id
     @Column(name="emp_no")
-    private int emp_no;
+    private int empNo;
 
     @Column(name="birth_date")
     private Date birthDate;

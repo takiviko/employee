@@ -4,6 +4,7 @@ import hu.inf.unideb.hu.employee.Exception.DuplicateDeptManagerException;
 import hu.inf.unideb.hu.employee.Exception.UnknownDeptManagerException;
 import hu.inf.unideb.hu.employee.Model.DeptManager;
 import hu.inf.unideb.hu.employee.Repository.DAO.Interfaces.DeptManagerDAO;
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.DeptManagerKey;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +21,7 @@ public class DeptManagerDAOImpl implements DeptManagerDAO {
     }
 
     @Override
-    public void deleteDeptManager(int emp_no, String dept_no) throws UnknownDeptManagerException {
+    public void deleteDeptManager(DeptManagerKey deptManagerKey) throws UnknownDeptManagerException {
 
     }
 

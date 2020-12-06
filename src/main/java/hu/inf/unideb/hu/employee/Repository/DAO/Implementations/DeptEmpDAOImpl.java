@@ -12,7 +12,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -44,8 +46,18 @@ public class DeptEmpDAOImpl implements DeptEmpDAO {
     }
 
     @Override
-    public void deleteDeptEmp(int emp_no, String dept_no) throws UnknownDeptEmpException {
-
+    @Transactional
+    public void deleteDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException {
+        Optional<DeptEmpEntity> deptEmpEntity = deptEmpRepository.findByDeptEmpKey(deptEmpKey);
+        if(deptEmpEntity.isEmpty()) {
+            throw new UnknownDeptEmpException("DeptEmp " + deptEmpKey.toString() + " does not exist");
+        }
+        try {
+            log.info("DeptEmp " + deptEmpKey + " deleted");
+            deptEmpRepository.delete(deptEmpEntity.get());
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
     }
 
     @Override
@@ -54,7 +66,7 @@ public class DeptEmpDAOImpl implements DeptEmpDAO {
     }
 
     @Override
-    public DeptEmp getDeptEmp(int emp_no, String dept_no) throws UnknownDeptEmpException {
+    public DeptEmp getDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException {
         return null;
     }
 

@@ -20,7 +20,7 @@ public class TitleEntity {
 
     @Id
     @Column(name="emp_no")
-    private int emp_no;
+    private int empNo;
 
     @Column(name="title")
     private String title;

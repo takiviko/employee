@@ -4,6 +4,7 @@ import hu.inf.unideb.hu.employee.Exception.DuplicateDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownEmployeeException;
 import hu.inf.unideb.hu.employee.Model.DeptEmp;
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.DeptEmpKey;
 
 import java.util.Collection;
 
@@ -11,11 +12,11 @@ public interface DeptEmpDAO {
 
     void createDeptEmp(DeptEmp deptEmp) throws DuplicateDeptEmpException;
 
-    void deleteDeptEmp(int emp_no, String dept_no) throws UnknownDeptEmpException;
+    void deleteDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException;
 
     void updateDeptEmp(DeptEmp deptEmp) throws UnknownDeptEmpException, UnknownEmployeeException;
 
-    DeptEmp getDeptEmp(int emp_no, String dept_no) throws UnknownDeptEmpException;
+    DeptEmp getDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException;
 
     Collection<DeptEmp> getAllDeptEmps();
 

@@ -5,6 +5,7 @@ import hu.inf.unideb.hu.employee.Exception.UnknownDeptEmpException;
 import hu.inf.unideb.hu.employee.Exception.UnknownEmployeeException;
 import hu.inf.unideb.hu.employee.Model.DeptEmp;
 import hu.inf.unideb.hu.employee.Repository.DAO.Interfaces.DeptEmpDAO;
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.DeptEmpKey;
 import hu.inf.unideb.hu.employee.Service.Interfaces.DeptEmpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,8 @@ public class DeptEmpServiceImpl implements DeptEmpService {
     }
 
     @Override
-    public void deleteDeptEmp(int emp_no, String dept_no) throws UnknownDeptEmpException {
-
+    public void deleteDeptEmp(DeptEmpKey deptEmpKey) throws UnknownDeptEmpException {
+        deptEmpDAO.deleteDeptEmp(deptEmpKey);
     }
 
     @Override

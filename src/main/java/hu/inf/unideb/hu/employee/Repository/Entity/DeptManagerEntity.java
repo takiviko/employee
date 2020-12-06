@@ -17,13 +17,8 @@ import java.util.Date;
 @IdClass(DeptManagerKey.class)
 public class DeptManagerEntity {
 
-    @Id
-    @Column(name="emp_no")
-    private int emp_no;
-
-    @Id
-    @Column(name="dept_no")
-    private String dept_no;
+    @EmbeddedId
+    private DeptManagerKey deptManagerKey;
 
     @Column(name="from_date")
     private Date fromDate;

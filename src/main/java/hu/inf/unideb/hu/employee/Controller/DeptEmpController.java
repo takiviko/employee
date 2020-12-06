@@ -2,14 +2,13 @@ package hu.inf.unideb.hu.employee.Controller;
 
 import hu.inf.unideb.hu.employee.Controller.DTO.DeptEmpDTO;
 import hu.inf.unideb.hu.employee.Exception.DuplicateDeptEmpException;
+import hu.inf.unideb.hu.employee.Exception.UnknownDeptEmpException;
 import hu.inf.unideb.hu.employee.Model.DeptEmp;
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.DeptEmpKey;
 import hu.inf.unideb.hu.employee.Service.Interfaces.DeptEmpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collection;
@@ -34,6 +33,15 @@ public class DeptEmpController {
         try {
             deptEmpService.addDeptEmp(convertDTOToDeptEmp(deptEmpDTO));
         } catch (DuplicateDeptEmpException e) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/")
+    public void deleteDeptEmp(DeptEmpKey deptEmpKey) {
+        try {
+            deptEmpService.deleteDeptEmp(deptEmpKey);
+        } catch (UnknownDeptEmpException e) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, e.getMessage());
         }
     }

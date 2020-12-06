@@ -20,7 +20,7 @@ public class SalaryEntity {
 
     @Id
     @Column(name="emp_no")
-    private int emp_no;
+    private int empNo;
 
     @Column(name="salary")
     private int salary;

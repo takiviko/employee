@@ -11,10 +11,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
-    int emp_no;
-    Date birth_date;
-    String first_name;
-    String last_name;
+    int empNo;
+    Date birthDate;
+    String firstName;
+    String lastName;
     Gender gender;
-    Date hire_date;
+    Date hireDate;
 }

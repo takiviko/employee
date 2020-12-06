@@ -10,8 +10,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Salary {
-    int emp_no;
+    int empNo;
     int salary;
-    Date from_date;
-    Date to_date;
+    Date fromDate;
+    Date toDate;
 }
