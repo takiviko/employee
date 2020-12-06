@@ -29,11 +29,11 @@ public class DeptEmpDAOImpl implements DeptEmpDAO {
     public void createDeptEmp(DeptEmp deptEmp) throws DuplicateDeptEmpException {
         if(
                 deptEmpRepository.existsDeptEmpEntityByDeptEmpKey(DeptEmpKey.builder()
-                        .empNo(deptEmp.getEmpNo())
-                        .deptNo(deptEmp.getDeptNo())
+                        .empNo(deptEmp.getDeptEmpKey().getEmpNo())
+                        .deptNo(deptEmp.getDeptEmpKey().getDeptNo())
                         .build()))
         {
-            throw new DuplicateDeptEmpException("DeptEmp " + deptEmp.getEmpNo()  +  ", " + deptEmp.getDeptNo() + " already exists");
+            throw new DuplicateDeptEmpException("DeptEmp " + deptEmp.getDeptEmpKey()  +  ", " + deptEmp.getDeptEmpKey() + " already exists");
         }
         DeptEmpEntity deptEmpEntity = convertDeptEmpToEntity(deptEmp);
 
@@ -79,8 +79,7 @@ public class DeptEmpDAOImpl implements DeptEmpDAO {
 
     protected DeptEmp convertEntityToDeptEmp(DeptEmpEntity deptEmpEntity) {
         return DeptEmp.builder()
-                .deptNo(deptEmpEntity.getDeptEmpKey().getDeptNo())
-                .empNo(deptEmpEntity.getDeptEmpKey().getEmpNo())
+                .deptEmpKey(deptEmpEntity.getDeptEmpKey())
                 .fromDate(deptEmpEntity.getFromDate())
                 .toDate(deptEmpEntity.getToDate())
                 .build();
@@ -89,8 +88,8 @@ public class DeptEmpDAOImpl implements DeptEmpDAO {
     protected DeptEmpEntity convertDeptEmpToEntity(DeptEmp deptEmp) {
         return DeptEmpEntity.builder()
                 .deptEmpKey(DeptEmpKey.builder()
-                        .deptNo(deptEmp.getDeptNo())
-                        .empNo(deptEmp.getEmpNo())
+                        .deptNo(deptEmp.getDeptEmpKey().getDeptNo())
+                        .empNo(deptEmp.getDeptEmpKey().getEmpNo())
                         .build())
                 .fromDate(deptEmp.getFromDate())
                 .toDate(deptEmp.getToDate())

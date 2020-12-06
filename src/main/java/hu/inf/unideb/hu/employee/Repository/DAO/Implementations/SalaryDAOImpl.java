@@ -5,6 +5,7 @@ import hu.inf.unideb.hu.employee.Exception.UnknownEmployeeException;
 import hu.inf.unideb.hu.employee.Exception.UnknownSalaryException;
 import hu.inf.unideb.hu.employee.Model.Salary;
 import hu.inf.unideb.hu.employee.Repository.DAO.Interfaces.SalaryDAO;
+import hu.inf.unideb.hu.employee.Repository.SalaryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,7 @@ import java.util.Collection;
 @Repository
 public class SalaryDAOImpl implements SalaryDAO {
 
+    private final SalaryRepository salaryRepository;
 
     @Override
     public void addSalary(Salary salary) throws DuplicateSalaryException {

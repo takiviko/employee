@@ -1,5 +1,6 @@
 package hu.inf.unideb.hu.employee.Controller.DTO;
 
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.DeptEmpKey;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,8 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DeptEmpDTO {
-    int empNo;
-    String deptNo;
+    DeptEmpKey deptEmpKey;
     Date fromDate;
     Date toDate;
 }

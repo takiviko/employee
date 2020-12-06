@@ -4,6 +4,8 @@ import hu.inf.unideb.hu.employee.Exception.DuplicateTitleException;
 import hu.inf.unideb.hu.employee.Exception.UnknownTitleException;
 import hu.inf.unideb.hu.employee.Model.Title;
 import hu.inf.unideb.hu.employee.Repository.DAO.Interfaces.TitleDAO;
+import hu.inf.unideb.hu.employee.Repository.SalaryRepository;
+import hu.inf.unideb.hu.employee.Repository.TitleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +15,7 @@ import java.util.Collection;
 @Repository
 public class TitleDAOImpl implements TitleDAO {
 
+    private final TitleRepository titleRepository;
 
     @Override
     public void addTitle(Title title) throws DuplicateTitleException {

@@ -5,6 +5,7 @@ import hu.inf.unideb.hu.employee.Exception.UnknownEmployeeException;
 import hu.inf.unideb.hu.employee.Model.Employee;
 import hu.inf.unideb.hu.employee.Model.Enums.Gender;
 import hu.inf.unideb.hu.employee.Repository.DAO.Interfaces.EmployeeDAO;
+import hu.inf.unideb.hu.employee.Repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,7 @@ import java.util.Collection;
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
 
+    private final EmployeeRepository employeeRepository;
 
     @Override
     public void addEmployee(Employee employee) throws DuplicateEmployeeException {

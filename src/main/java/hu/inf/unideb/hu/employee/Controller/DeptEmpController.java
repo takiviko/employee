@@ -48,8 +48,7 @@ public class DeptEmpController {
 
     private DeptEmpDTO convertDeptEmpToDTO(DeptEmp deptEmp) {
         return DeptEmpDTO.builder()
-                .deptNo(deptEmp.getDeptNo())
-                .empNo((deptEmp.getEmpNo()))
+                .deptEmpKey(deptEmp.getDeptEmpKey())
                 .toDate(deptEmp.getToDate())
                 .fromDate(deptEmp.getFromDate())
                 .build();
@@ -58,8 +57,7 @@ public class DeptEmpController {
 
     private DeptEmp convertDTOToDeptEmp(DeptEmpDTO deptEmpDTO) {
         return DeptEmp.builder()
-                .deptNo(deptEmpDTO.getDeptNo())
-                .empNo((deptEmpDTO.getEmpNo()))
+                .deptEmpKey(deptEmpDTO.getDeptEmpKey())
                 .toDate(deptEmpDTO.getToDate())
                 .fromDate(deptEmpDTO.getFromDate())
                 .build();

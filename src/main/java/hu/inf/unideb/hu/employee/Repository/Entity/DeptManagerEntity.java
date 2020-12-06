@@ -14,7 +14,6 @@ import java.util.Date;
 @Entity
 @EqualsAndHashCode
 @Table(name="dept_manager")
-@IdClass(DeptManagerKey.class)
 public class DeptManagerEntity {
 
     @EmbeddedId

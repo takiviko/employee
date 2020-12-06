@@ -1,4 +1,8 @@
 package hu.inf.unideb.hu.employee.Repository;
 
-public interface EmployeeRepository {
+import hu.inf.unideb.hu.employee.Repository.Entity.EmployeeEntity;
+import org.springframework.data.repository.CrudRepository;
+
+public interface EmployeeRepository extends CrudRepository<EmployeeEntity, Integer> {
+
 }

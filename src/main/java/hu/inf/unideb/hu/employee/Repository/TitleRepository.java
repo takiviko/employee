@@ -1,4 +1,8 @@
 package hu.inf.unideb.hu.employee.Repository;
 
-public interface TitleRepository {
+import hu.inf.unideb.hu.employee.Repository.Entity.TitleEntity;
+import org.springframework.data.repository.CrudRepository;
+
+public interface TitleRepository extends CrudRepository<TitleEntity, Integer> {
+
 }
