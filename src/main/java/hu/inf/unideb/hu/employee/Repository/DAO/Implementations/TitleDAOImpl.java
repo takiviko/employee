@@ -28,7 +28,7 @@ public class TitleDAOImpl implements TitleDAO {
     }
 
     @Override
-    public void deleteTitle(Title title) throws UnknownTitleException {
+    public void deleteTitle(int empNo) throws UnknownTitleException {
 
     }
 
@@ -38,7 +38,7 @@ public class TitleDAOImpl implements TitleDAO {
     }
 
     @Override
-    public Collection<Title> getAllTitlesByEmployee(int emp_no) {
+    public Collection<Title> getAllTitlesByEmployee(int empNo) {
         return null;
     }
 }

@@ -12,10 +12,10 @@ public interface TitleDAO {
 
     void UpdateTitle(Title oldTitle, Title newTitle) throws UnknownTitleException;
 
-    void deleteTitle(Title title) throws UnknownTitleException;
+    void deleteTitle(int empNo) throws UnknownTitleException;
 
     Collection<Title> getAllTitles();
 
-    Collection<Title> getAllTitlesByEmployee(int emp_no);
+    Collection<Title> getAllTitlesByEmployee(int empNo);
 
 }

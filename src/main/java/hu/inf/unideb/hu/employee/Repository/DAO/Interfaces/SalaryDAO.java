@@ -12,10 +12,10 @@ public interface SalaryDAO {
 
     void updateSalary(Salary oldSalary, Salary newSalary) throws UnknownSalaryException;
 
-    void deleteSalary(Salary salary) throws UnknownSalaryException;
+    void deleteSalary(int empNo) throws UnknownSalaryException;
 
     Collection<Salary> getAllSalaries();
 
-    Collection<Salary> getAllSalariesByEmployee(int emp_id) throws UnknownEmployeeException;
+    Collection<Salary> getAllSalariesByEmployee(int empNo) throws UnknownEmployeeException;
 
 }

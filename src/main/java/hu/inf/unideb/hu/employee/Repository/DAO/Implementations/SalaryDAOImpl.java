@@ -28,7 +28,7 @@ public class SalaryDAOImpl implements SalaryDAO {
     }
 
     @Override
-    public void deleteSalary(Salary salary) throws UnknownSalaryException {
+    public void deleteSalary(int empNo) throws UnknownSalaryException {
 
     }
 
@@ -38,7 +38,7 @@ public class SalaryDAOImpl implements SalaryDAO {
     }
 
     @Override
-    public Collection<Salary> getAllSalariesByEmployee(int emp_id) throws UnknownEmployeeException {
+    public Collection<Salary> getAllSalariesByEmployee(int empNo) throws UnknownEmployeeException {
         return null;
     }
 }

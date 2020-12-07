@@ -1,8 +1,12 @@
 package hu.inf.unideb.hu.employee.Controller.DTO;
 
-import hu.inf.unideb.hu.employee.Model.Enums.Gender;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Date;
 
 
@@ -15,6 +19,6 @@ public class EmployeeDTO {
         Date birthDate;
         String firstName;
         String lastName;
-        Gender gender;
+        String gender;
         Date hireDate;
 }

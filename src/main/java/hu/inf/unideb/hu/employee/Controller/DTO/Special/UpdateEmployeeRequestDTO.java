@@ -1,6 +1,5 @@
 package hu.inf.unideb.hu.employee.Controller.DTO.Special;
 
-import hu.inf.unideb.hu.employee.Model.Enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,13 +16,13 @@ public class UpdateEmployeeRequestDTO {
     Date oldBirthDate;
     String oldFirstName;
     String oldLastName;
-    Gender oldGender;
+    String oldGender;
     Date oldHireDate;
 
     int newEmpNo;
     Date newBirthDate;
     String newFirstName;
     String newLastName;
-    Gender newGender;
+    String newGender;
     Date newHireDate;
 }

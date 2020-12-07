@@ -1,8 +1,8 @@
 package hu.inf.unideb.hu.employee.Model;
 
-import hu.inf.unideb.hu.employee.Model.Enums.Gender;
 import lombok.*;
 
+import javax.persistence.*;
 import java.util.Date;
 
 @Builder
@@ -11,10 +11,11 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
+    @Id
     int empNo;
     Date birthDate;
     String firstName;
     String lastName;
-    Gender gender;
+    String gender;
     Date hireDate;
 }

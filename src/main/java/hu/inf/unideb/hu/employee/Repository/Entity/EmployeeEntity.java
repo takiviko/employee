@@ -1,18 +1,14 @@
 package hu.inf.unideb.hu.employee.Repository.Entity;
 
-import hu.inf.unideb.hu.employee.Model.Enums.Gender;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Entity
 @EqualsAndHashCode
@@ -33,7 +29,7 @@ public class EmployeeEntity {
     private String lastName;
 
     @Column(name="gender")
-    private Gender gender;
+    private String gender;
 
     @Column(name="hire_date")
     private Date hireDate;
