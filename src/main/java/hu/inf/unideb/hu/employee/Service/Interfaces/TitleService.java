@@ -8,6 +8,8 @@ import java.util.Collection;
 
 public interface TitleService {
 
+
+
     void addTitle(Title title) throws DuplicateTitleException;
 
     void UpdateTitle(Title oldTitle, Title newTitle) throws UnknownTitleException;

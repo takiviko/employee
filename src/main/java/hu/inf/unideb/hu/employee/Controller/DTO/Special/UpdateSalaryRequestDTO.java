@@ -1,5 +1,6 @@
 package hu.inf.unideb.hu.employee.Controller.DTO.Special;
 
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.SalaryKey;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,13 +14,11 @@ import java.util.Date;
 @NoArgsConstructor
 public class UpdateSalaryRequestDTO {
 
-    int oldEmpNo;
+    SalaryKey oldSalaryKey;
     int oldSalary;
-    Date oldFromDate;
     Date oldToDate;
 
-    int newEmpNo;
+    SalaryKey newSalaryKey;
     int newSalary;
-    Date newFromDate;
     Date newToDate;
 }

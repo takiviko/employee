@@ -15,7 +15,6 @@ import java.util.Collection;
 @Repository
 public class TitleDAOImpl implements TitleDAO {
 
-    private final TitleRepository titleRepository;
 
     @Override
     public void addTitle(Title title) throws DuplicateTitleException {

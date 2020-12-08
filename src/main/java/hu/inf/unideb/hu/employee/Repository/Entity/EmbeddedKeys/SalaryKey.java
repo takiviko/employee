@@ -8,18 +8,18 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Builder
 @Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeptManagerKey implements Serializable {
+public class SalaryKey implements Serializable {
 
     @Column(name="emp_no")
     private int empNo;
 
-    @Column(name="dept_no")
-    private String deptNo;
-
+    @Column(name="from_date")
+    private Date fromDate;
 }

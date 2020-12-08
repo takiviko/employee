@@ -1,12 +1,12 @@
 package hu.inf.unideb.hu.employee.Repository.Entity;
 
+import hu.inf.unideb.hu.employee.Model.Employee;
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.SalaryKey;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -18,17 +18,13 @@ import java.util.Date;
 @Table(name="salaries")
 public class SalaryEntity {
 
-    @Id
-    @Column(name="emp_no")
-    private int empNo;
-
     @Column(name="salary")
     private int salary;
 
-    @Column(name="from_date")
-    private Date fromDate;
-
     @Column(name="to_date")
     private Date toDate;
+
+    @EmbeddedId
+    private SalaryKey salaryKey;
 
 }

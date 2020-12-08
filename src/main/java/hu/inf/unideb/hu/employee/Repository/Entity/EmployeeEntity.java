@@ -1,9 +1,11 @@
 package hu.inf.unideb.hu.employee.Repository.Entity;
 
+import hu.inf.unideb.hu.employee.Model.Salary;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -33,5 +35,6 @@ public class EmployeeEntity {
 
     @Column(name="hire_date")
     private Date hireDate;
+
 
 }

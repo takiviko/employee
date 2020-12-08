@@ -1,7 +1,9 @@
 package hu.inf.unideb.hu.employee.Model;
 
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.SalaryKey;
 import lombok.*;
 
+import javax.persistence.Id;
 import java.util.Date;
 
 @Builder
@@ -10,8 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Salary {
-    int empNo;
     int salary;
-    Date fromDate;
     Date toDate;
+    SalaryKey salaryKey;
 }

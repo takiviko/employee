@@ -27,7 +27,7 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping(path = "/allEmployees")
-    public Collection<EmployeeDTO> listEmployees() {
+    public Collection<EmployeeDTO> readEmployees() {
         return employeeService.getAllEmployees().stream()
                 .map(this::convertEmployeeToDTO)
                 .collect(Collectors.toList());
@@ -43,7 +43,7 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/empNo/{empNo}")
-    public EmployeeDTO getEmployeeByEmpNo(@RequestParam int empNo) {
+    public EmployeeDTO readEmployeeByEmpNo(@RequestParam int empNo) {
         try {
             return convertEmployeeToDTO(employeeService.getEmployeeById(empNo));
         } catch (Exception e) {
@@ -52,7 +52,7 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/gender/{gender}")
-    public List<EmployeeDTO> getEmployeesByGender(@RequestParam("gender") String gender) throws UnknownEmployeeException {
+    public List<EmployeeDTO> readEmployeesByGender(@RequestParam("gender") String gender) throws UnknownEmployeeException {
         log.info("Querying gender " + gender);
         return employeeService.getEmployeesByGender(gender).stream()
                 .map(this::convertEmployeeToDTO)
