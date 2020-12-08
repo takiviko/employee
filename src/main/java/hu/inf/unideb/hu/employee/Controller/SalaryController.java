@@ -36,10 +36,11 @@ public class SalaryController {
     }
 
     @GetMapping("/{empNo}")
-    public Collection<Salary> readSalariesByEmpNo(@RequestParam("empNo") int empNo) {
+    public Collection<SalaryDTO> readSalariesByEmpNo(@RequestParam("empNo") int empNo) {
         try {
-
-            return salaryService.getSalariesByEmployee(empNo);
+            return salaryService.getSalariesByEmployee(empNo).stream()
+                    .map(this::convertSalaryToDTO)
+                    .collect(Collectors.toList());
         } catch (UnknownEmployeeException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }

@@ -1,5 +1,6 @@
 package hu.inf.unideb.hu.employee.Controller.DTO;
 
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.TitleKey;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +13,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TitleDTO {
-    int empNo;
-    String title;
-    Date fromDate;
-    Date toDate;
+    private TitleKey titleKey;
+    private Date toDate;
 }

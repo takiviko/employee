@@ -1,11 +1,9 @@
 package hu.inf.unideb.hu.employee.Repository.Entity;
 
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.TitleKey;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -18,15 +16,8 @@ import java.util.Date;
 @Table(name="titles")
 public class TitleEntity {
 
-    @Id
-    @Column(name="emp_no")
-    private int empNo;
-
-    @Column(name="title")
-    private String title;
-
-    @Column(name="from_date")
-    private Date fromDate;
+    @EmbeddedId
+    private TitleKey titleKey;
 
     @Column(name="to_date")
     private Date toDate;

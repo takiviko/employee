@@ -1,5 +1,6 @@
 package hu.inf.unideb.hu.employee.Model;
 
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.TitleKey;
 import lombok.*;
 
 import java.util.Date;
@@ -10,8 +11,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Title {
-    int empNo;
-    String title;
-    Date fromDate;
-    Date toDate;
+    private TitleKey titleKey;
+    private Date toDate;
 }

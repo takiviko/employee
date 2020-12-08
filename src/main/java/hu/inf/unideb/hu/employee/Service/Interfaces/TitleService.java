@@ -3,22 +3,20 @@ package hu.inf.unideb.hu.employee.Service.Interfaces;
 import hu.inf.unideb.hu.employee.Exception.DuplicateTitleException;
 import hu.inf.unideb.hu.employee.Exception.UnknownTitleException;
 import hu.inf.unideb.hu.employee.Model.Title;
+import hu.inf.unideb.hu.employee.Repository.Entity.EmbeddedKeys.TitleKey;
 
 import java.util.Collection;
 
 public interface TitleService {
 
+    void createTitle(Title title) throws DuplicateTitleException;
 
+    void updateTitle(Title oldTitle, Title newTitle) throws UnknownTitleException, DuplicateTitleException;
 
-    void addTitle(Title title) throws DuplicateTitleException;
+    void deleteTitle(TitleKey titleKey) throws UnknownTitleException;
 
-    void UpdateTitle(Title oldTitle, Title newTitle) throws UnknownTitleException;
+    Collection<Title> readAllTitles();
 
-    void deleteTitle(Title title) throws UnknownTitleException;
-
-    Collection<Title> getAllTitles();
-
-    Collection<Title> getAllTitlesByEmployee(int emp_no);
-
+    Collection<Title> readAllTitlesByEmployee(int empNo) throws UnknownTitleException;
 
 }
