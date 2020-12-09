@@ -44,9 +44,6 @@ public class DepartmentDAOImpl implements DepartmentDAO {
         if(oldDepartmentEntity.isEmpty()) {
             throw new UnknownDepartmentException("Department " + oldDepartment.getDeptName() + " not found");
         }
-        if(departmentRepository.existsDepartmentEntityByDeptName(newDepartment.getDeptName())) {
-            throw new DuplicateDepartmentException("Department " + newDepartment.getDeptName() + " already exists");
-        }
 
         DepartmentEntity departmentEntity = convertDepartmentToEntity(newDepartment);
         departmentEntity.setDeptName(oldDepartment.getDeptName());
