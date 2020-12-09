@@ -14,7 +14,7 @@ public interface EmployeeDAO {
 
     void updateEmployee(Employee oldEmployee, Employee newEmployee) throws UnknownEmployeeException, DuplicateEmployeeException;
 
-    Collection<Employee> getAllEmployees();
+    Collection<Employee> readAll();
 
     Employee getEmployeeById(int emp_id) throws UnknownEmployeeException;
 

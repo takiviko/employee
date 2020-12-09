@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Date;
 
 @RequiredArgsConstructor
 @Service
@@ -38,7 +37,7 @@ public class SalaryServiceImpl implements SalaryService {
 
     @Override
     public Collection<Salary> readAllSalaries() {
-        return salaryDAO.readAllSalaries();
+        return salaryDAO.readAll();
     }
 
     @Override

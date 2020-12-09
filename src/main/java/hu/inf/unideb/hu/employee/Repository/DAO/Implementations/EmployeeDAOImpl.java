@@ -58,13 +58,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public void updateEmployee(Employee oldEmployee, Employee newEmployee) throws UnknownEmployeeException, DuplicateEmployeeException {
+    public void updateEmployee(Employee oldEmployee, Employee newEmployee) throws UnknownEmployeeException {
         Optional<EmployeeEntity> oldEmployeeEntity = employeeRepository.findEmployeeEntityByEmpNo(oldEmployee.getEmpNo());
         if(oldEmployeeEntity.isEmpty()) {
             throw new UnknownEmployeeException("Employee " + oldEmployee.getEmpNo() + " not found");
-        }
-        if(employeeRepository.existsEmployeeEntityByEmpNo(newEmployee.getEmpNo())) {
-            throw new DuplicateEmployeeException("Employee " + newEmployee.getEmpNo() + " already exists");
         }
 
         EmployeeEntity employeeEntity = convertEmployeeToEntity(newEmployee);
@@ -80,7 +77,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public Collection<Employee> getAllEmployees() {
+    public Collection<Employee> readAll() {
         return StreamSupport.stream(employeeRepository.findAll().spliterator(), true)
                 .map(this::convertEntityToEmployee)
                 .collect(Collectors.toList());
@@ -98,9 +95,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public Collection<Employee> getEmployeesByGender(String gender) {
-                return employeeRepository.findEmployeeEntityByGender(gender).stream()
+                return StreamSupport.stream(employeeRepository.findEmployeeEntitiesByGender(gender).spliterator(), true)
                 .map(this::convertEntityToEmployee)
-                .collect(Collectors.toList());
+                        .collect(Collectors.toList());
     }
 
     protected EmployeeEntity convertEmployeeToEntity(Employee employee) {

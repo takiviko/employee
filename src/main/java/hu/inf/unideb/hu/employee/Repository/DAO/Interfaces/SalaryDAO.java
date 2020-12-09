@@ -16,7 +16,7 @@ public interface SalaryDAO {
 
     void deleteSalary(SalaryKey salaryKey) throws UnknownSalaryException;
 
-    Collection<Salary> readAllSalaries();
+    Collection<Salary> readAll();
 
     Collection<Salary> getSalariesByEmployee(int empNo) throws UnknownEmployeeException;
 

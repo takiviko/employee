@@ -89,7 +89,7 @@ public class SalaryDAOImpl implements SalaryDAO {
     }
 
     @Override
-    public Collection<Salary> readAllSalaries() {
+    public Collection<Salary> readAll() {
         return StreamSupport.stream(salaryRepository.findAll().spliterator(), true)
                 .map(this::convertEntityToSalary)
                 .collect(Collectors.toList());

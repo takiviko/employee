@@ -63,7 +63,7 @@ public class DepartmentDAOImplTest {
     public void testDeleteDepartment() throws UnknownDepartmentException {
         doReturn(Optional.of(getDepartmentEntity())).when(departmentRepository).findByDeptName(anyString());
         departmentDAO.deleteDepartment(getDepartment().getDeptName());
-        verify(departmentRepository, times(1)).findByDeptName(any());
+        verify(departmentRepository, times(1)).findByDeptName(getDepartment().getDeptName());
     }
 
     @Test
@@ -83,7 +83,7 @@ public class DepartmentDAOImplTest {
     }
 
     @Test
-    public void testUpdateDepartmentWithUnknownDepartment() throws DuplicateDepartmentException, DuplicateDepartmentException {
+    public void testUpdateDepartmentWithUnknownDepartment() throws UnknownDepartmentException, DuplicateDepartmentException {
         Department department1 = getDepartment();
         Department department2 = getDepartment2();
         assertThrows(UnknownDepartmentException.class, () -> {

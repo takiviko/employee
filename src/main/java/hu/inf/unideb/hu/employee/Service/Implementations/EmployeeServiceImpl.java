@@ -35,7 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Collection<Employee> getAllEmployees() {
-        return employeeDAO.getAllEmployees();
+        return employeeDAO.readAll();
     }
 
     @Override
