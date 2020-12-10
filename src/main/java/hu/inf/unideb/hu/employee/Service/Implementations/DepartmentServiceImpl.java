@@ -24,8 +24,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public void deleteDepartment(String deptName) throws UnknownDepartmentException {
-        departmentDAO.deleteDepartment(deptName);
+    public void deleteDepartment(String deptNo) throws UnknownDepartmentException {
+        departmentDAO.deleteDepartment(deptNo);
     }
 
     @Override

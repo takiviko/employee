@@ -87,13 +87,6 @@ public class EmployeeDAOImplTest {
     }
 
     @Test
-    public void testDeleteEmployeeWithDuplicateEmployee() throws UnknownEmployeeException {
-        doReturn(Optional.empty()).when(employeeRepository).findEmployeeEntityByEmpNo(anyInt());
-        assertThrows(UnknownEmployeeException.class, () -> employeeDAO.deleteEmployee(getEmployee().getEmpNo()));
-        verify(employeeRepository, times(1)).findEmployeeEntityByEmpNo(anyInt());
-    }
-
-    @Test
     public void testUpdateDepartment() throws UnknownEmployeeException, DuplicateEmployeeException {
         Employee employee1 = getEmployee();
         Employee employee2 = getEmployee2();

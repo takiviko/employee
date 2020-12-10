@@ -26,7 +26,7 @@ public class TitleServiceImpl implements TitleService {
 
     @Override
     public void updateTitle(Title oldTitle, Title newTitle) throws UnknownTitleException, DuplicateTitleException {
-        titleDAO.UpdateTitle(oldTitle, newTitle);
+        titleDAO.updateTitle(oldTitle, newTitle);
     }
 
     @Override

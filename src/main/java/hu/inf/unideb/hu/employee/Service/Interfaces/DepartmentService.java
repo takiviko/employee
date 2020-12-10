@@ -11,7 +11,7 @@ public interface DepartmentService {
 
     Collection<Department> getAllDepartments();
 
-    void deleteDepartment(String dept_name) throws UnknownDepartmentException;
+    void deleteDepartment(String deptNo) throws UnknownDepartmentException;
 
     void createDepartment(Department department) throws DuplicateDepartmentException;
 

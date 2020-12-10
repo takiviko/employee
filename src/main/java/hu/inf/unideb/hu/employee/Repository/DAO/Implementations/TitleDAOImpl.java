@@ -42,7 +42,7 @@ public class TitleDAOImpl implements TitleDAO {
     }
 
     @Override
-    public void UpdateTitle(Title oldTitle, Title newTitle) throws UnknownTitleException {
+    public void updateTitle(Title oldTitle, Title newTitle) throws UnknownTitleException {
         Optional<TitleEntity> oldTitleEntity = titleRepository.findTitleEntityByTitleKey(oldTitle.getTitleKey());
         if(oldTitleEntity.isEmpty()) {
             throw new UnknownTitleException("Title " + oldTitle.getTitleKey() + " does not exist");

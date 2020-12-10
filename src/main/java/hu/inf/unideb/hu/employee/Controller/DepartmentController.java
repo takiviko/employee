@@ -42,9 +42,9 @@ public class DepartmentController {
     }
 
     @DeleteMapping("/")
-    public void deleteDepartment(@RequestParam String deptName) {
+    public void deleteDepartment(@RequestParam String deptNo) {
         try {
-            departmentService.deleteDepartment(deptName);
+            departmentService.deleteDepartment(deptNo);
         } catch (UnknownDepartmentException e) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, e.getMessage());
         }

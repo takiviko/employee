@@ -54,6 +54,14 @@ public class DepartmentDAOImplTest {
     }
 
     @Test
+    public void testCreateDepartmentWithExistingDepartment3() throws DuplicateDepartmentException {
+        doReturn(true).when(departmentRepository).existsDepartmentEntityByDeptNo(anyString());
+        assertThrows(DuplicateDepartmentException.class, () -> {
+            departmentDAO.createDepartment(getDepartment());
+        });
+    }
+
+    @Test
     public void testReadAll() {
         departmentDAO.readAll();
         verify(departmentRepository, times(1)).findAll();
@@ -61,23 +69,23 @@ public class DepartmentDAOImplTest {
 
     @Test
     public void testDeleteDepartment() throws UnknownDepartmentException {
-        doReturn(Optional.of(getDepartmentEntity())).when(departmentRepository).findByDeptName(anyString());
-        departmentDAO.deleteDepartment(getDepartment().getDeptName());
-        verify(departmentRepository, times(1)).findByDeptName(getDepartment().getDeptName());
+        doReturn(Optional.of(getDepartmentEntity())).when(departmentRepository).findByDeptNo(anyString());
+        departmentDAO.deleteDepartment(getDepartment().getDeptNo());
+        verify(departmentRepository, times(1)).findByDeptNo(getDepartment().getDeptNo());
     }
 
     @Test
     public void testDeleteDepartmentWithUnknownDepartment() throws UnknownDepartmentException {
-        doReturn(Optional.empty()).when(departmentRepository).findByDeptName(anyString());
-        assertThrows(UnknownDepartmentException.class, () -> departmentDAO.deleteDepartment(getDepartment().getDeptName()));
-        verify(departmentRepository, times(1)).findByDeptName(any());
+        doReturn(Optional.empty()).when(departmentRepository).findByDeptNo(anyString());
+        assertThrows(UnknownDepartmentException.class, () -> departmentDAO.deleteDepartment(getDepartment().getDeptNo()));
+        verify(departmentRepository, times(1)).findByDeptNo(any());
     }
 
     @Test
     public void testUpdateDepartment() throws UnknownDepartmentException, DuplicateDepartmentException {
         Department department1 = getDepartment();
         Department department2 = getDepartment2();
-        doReturn(Optional.of(department1)).when(departmentRepository).findByDeptName(anyString());
+        doReturn(Optional.of(department1)).when(departmentRepository).findByDeptNo(anyString());
         departmentDAO.updateDepartment(department1, department2);
         verify(departmentRepository, times(1)).save(any());
     }
@@ -104,8 +112,6 @@ public class DepartmentDAOImplTest {
             departmentDAO.getDepartmentByName(anyString());
         });
     }
-
-
 
     private Department getDepartment() {
         return Department.builder()

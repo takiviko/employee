@@ -11,7 +11,7 @@ public interface TitleDAO {
 
     void createTitle(Title title) throws DuplicateTitleException;
 
-    void UpdateTitle(Title oldTitle, Title newTitle) throws UnknownTitleException, DuplicateTitleException;
+    void updateTitle(Title oldTitle, Title newTitle) throws UnknownTitleException, DuplicateTitleException;
 
     void deleteTitle(TitleKey titleKey) throws UnknownTitleException;
 
